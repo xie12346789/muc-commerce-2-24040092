@@ -1,0 +1,6 @@
+﻿chart_id,file_name,business_question,chart_type,key_finding,limitation
+01,01_category_bar.png,不同偏好订单类别用户的流失率有何差异？,bar,Electronics类别流失率最高(20.4%)，Laptop类别最低(6.6%)，各类别流失率差异显著,仅展示关联关系，不能证明因果；Laptop样本量较小(n=303)，结论可靠性需谨慎
+02,02_behavior_scatter.png,用户订单数量与返现金额之间存在何种关系？,scatter,订单数量与返现金额呈正相关，未流失用户在高订单量区域分布更集中,相关关系不等于因果关系；存在部分异常值影响视觉判断
+03,03_ordered_line.png,不同使用年限阶段的用户流失率变化趋势如何？,line,新用户流失率最高(20%)，随使用年限增加流失率下降，49-60个月达最低点(11.3%),是有序阶段比较，非真实时间趋势；0个月样本量小(n=60)影响稳定性
+04,04_composition_chart.png,用户偏好的支付方式分布情况如何？,pie,Cash on Delivery占比最高(41.1%)，其次是Debit Card(24.4%)和E-wallet(22.5%),适合展示构成比例，但不适合比较流失率等其他指标
+05,day06_visualization_summary.png,整体概览,dashboard,电子产品用户流失风险最高，新用户留存是重点，货到付款用户占比最大,综合图为概览性质，详细数值需参考独立图表

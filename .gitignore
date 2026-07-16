@@ -1,0 +1,14 @@
+.vscode/
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+.ipynb_checkpoints/
+.env
+测试高铁订票系统.py
+run_day06.py
