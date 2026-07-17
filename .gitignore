@@ -11,4 +11,7 @@ Thumbs.db
 .ipynb_checkpoints/
 .env
 测试高铁订票系统.py
+run_day03.py
+run_day04.py
+run_day05.py
 run_day06.py
