@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}智能问答 | 电商用户分析系统{% endblock %}
+{% block content %}
+<h2>智能问答助手</h2>
+<p class="text-muted">欢迎，{{ username }}</p>
+
+<div class="card">
+    <div class="card-body">
+        <div id="chat-history" class="mb-4" style="height: 300px; overflow-y: auto; border: 1px solid #ddd; padding: 10px;">
+            <div class="text-muted">我可以回答关于用户数、流失率、品类偏好、生命周期和订单情况的问题。</div>
+        </div>
+        <div class="input-group">
+            <input type="text" id="question" class="form-control" placeholder="请输入问题..." />
+            <button class="btn btn-primary" onclick="sendQuestion()">发送</button>
+        </div>
+    </div>
+</div>
+
+<script>
+async function sendQuestion() {
+    const question = document.getElementById('question').value.trim();
+    if (!question) return;
+    
+    const history = document.getElementById('chat-history');
+    history.innerHTML += `<div><strong>你：</strong>${question}</div>`;
+    
+    const response = await fetch('/api/ask', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ question })
+    });
+    const data = await response.json();
+    
+    history.innerHTML += `<div class="text-primary"><strong>助手：</strong>${data.answer}</div>`;
+    document.getElementById('question').value = '';
+    history.scrollTop = history.scrollHeight;
+}
+</script>
+{% endblock %}

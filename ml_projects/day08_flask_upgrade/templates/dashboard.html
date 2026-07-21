@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block title %}数据看板 | 电商用户分析系统{% endblock %}
+{% block content %}
+<h2>数据看板</h2>
+<p class="text-muted">欢迎，{{ username }}</p>
+
+<div class="mb-4">
+    <form method="GET" action="/dashboard" class="form-inline">
+        <label for="category" class="form-label me-2">选择品类：</label>
+        <select class="form-select me-2" id="category" name="category" onchange="this.form.submit()">
+            {% for cat in categories %}
+                <option value="{{ cat }}" {% if cat == selected_category %}selected{% endif %}>{{ cat }}</option>
+            {% endfor %}
+        </select>
+    </form>
+</div>
+
+<div class="row mb-4">
+    {% for metric in metrics %}
+        <div class="col-md-3">
+            <div class="card stat-card bg-primary text-white">
+                <div class="card-body">
+                    <div class="card-title">{{ metric.label }}</div>
+                    <div class="card-text display-4">{{ metric.value }}</div>
+                    <div class="card-text text-sm">{{ metric.note }}</div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+<div class="alert alert-info">{{ insight }}</div>
+
+<h3>品类数据</h3>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>偏好品类</th>
+            <th>用户数</th>
+            <th>流失率</th>
+            <th>平均订单数</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in category_rows %}
+            <tr>
+                <td>{{ row.偏好品类 }}</td>
+                <td>{{ row.用户数 }}</td>
+                <td>{{ row.流失率 }}</td>
+                <td>{{ row.平均订单数 }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
